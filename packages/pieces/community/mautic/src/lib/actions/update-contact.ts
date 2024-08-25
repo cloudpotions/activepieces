@@ -20,7 +20,7 @@ export const updateContact = createAction({
     const { base_url, username, password } = context.auth;
     const request: HttpRequest = {
       method: HttpMethod.PATCH,
-      url: `${base_url.endsWith('/') ? base_url : base_url + '/'}api/contacts/${
+      url: `${base_url.endsWith('/') ? base_url.slice(0, -1) : base_url}/api/contacts/${
         context.propsValue.id
       }/edit`,
       body: JSON.stringify(context.propsValue.fields),
